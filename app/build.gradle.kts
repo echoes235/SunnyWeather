@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sunnyweather"
+    namespace = "com.example.sunnyweather.android"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.sunnyweather"
+        applicationId = "com.example.sunnyweather.android"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -36,12 +36,25 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.google.material)
+    implementation(libs.androidx.swiperefreshlayout)
+
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.retrofit.converter.gson)
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

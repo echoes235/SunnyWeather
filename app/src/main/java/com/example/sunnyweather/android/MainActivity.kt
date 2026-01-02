@@ -1,4 +1,4 @@
-package com.example.sunnyweather
+package com.example.sunnyweather.android
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
