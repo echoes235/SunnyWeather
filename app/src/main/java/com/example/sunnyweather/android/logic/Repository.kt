@@ -28,14 +28,13 @@ object Repository {
                 Result.success(places)
 
             } else {
-
                 Result.failure(
                     RuntimeException("response status is ${placeResponse.status}")
                 )
             }
 
         } catch (e: Exception) {
-            Result.failure<Place>(e)
+            Result.failure<List<Place>>(e)
         }
 
         // 8️⃣ 把 result 发射出去

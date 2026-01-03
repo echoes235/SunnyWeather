@@ -6,7 +6,9 @@ plugins {
 android {
     namespace = "com.example.sunnyweather.android"
     compileSdk = 36
-
+    buildFeatures {
+        viewBinding = true
+    }
     defaultConfig {
         applicationId = "com.example.sunnyweather.android"
         minSdk = 24
@@ -40,7 +42,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
+    implementation("androidx.fragment:fragment-ktx:1.8.9")
     implementation(libs.androidx.recyclerview)
     implementation(libs.google.material)
     implementation(libs.androidx.swiperefreshlayout)
