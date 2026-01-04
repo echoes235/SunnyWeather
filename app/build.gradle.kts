@@ -18,7 +18,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    signingConfigs {
+        config {
+            
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
