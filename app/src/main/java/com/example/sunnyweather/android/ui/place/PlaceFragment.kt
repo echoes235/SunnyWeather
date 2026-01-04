@@ -1,5 +1,6 @@
 package com.example.sunnyweather.android.ui.place
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.sunnyweather.android.R
 import com.example.sunnyweather.android.databinding.FragmentPlaceBinding
+import com.example.sunnyweather.android.ui.weather.WeatherActivity
 
 class PlaceFragment: Fragment(R.layout.fragment_place)
 {
@@ -29,8 +31,26 @@ class PlaceFragment: Fragment(R.layout.fragment_place)
         super.onViewCreated(view, savedInstanceState)
         _binding= FragmentPlaceBinding.bind(view)
         binding.recycleView.layoutManager= LinearLayoutManager(requireContext())
-        adapter= PlaceAdapter{place->
-            TODO()
+        if(viewModel.isPlaceSaved())
+        {
+            val place=viewModel.getSavedPlace()
+            val intent=Intent(requireContext(), WeatherActivity::class.java).apply {
+                putExtra("location_lng",place.location.lng)
+                putExtra("location_lat",place.location.lat)
+                putExtra("place_name",place.name)
+            }
+            startActivity(intent)
+            activity?.finish()
+        }
+        adapter= PlaceAdapter(){place->
+            val intent= Intent(requireContext(), WeatherActivity::class.java).apply {
+                putExtra("location_lng",place.location.lng)
+                putExtra("location_lat",place.location.lat)
+                putExtra("place_name",place.name)
+            }
+            viewModel.savePlace(place)
+            startActivity(intent)
+            activity?.finish()
         }
         binding.recycleView.adapter=adapter
         binding.searchPlaceEdit.addTextChangedListener { editable->

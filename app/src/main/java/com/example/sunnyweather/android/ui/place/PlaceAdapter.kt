@@ -29,7 +29,10 @@ class PlaceAdapter(private val onClick:(Place)->Unit): RecyclerView.Adapter<Plac
         val place =placeList[position]
         holder.placeName.text=place.name
         holder.placeAddress.text=place.address
-        holder.itemView.setOnClickListener { onClick(place) }
+        holder.itemView.setOnClickListener {
+            val pos=holder.bindingAdapterPosition
+            if(pos!= RecyclerView.NO_POSITION)
+            onClick(placeList[pos]) }
     }
     override fun getItemCount(): Int=placeList.size
     fun submitList(list:List<Place>)
